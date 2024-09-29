@@ -2,11 +2,13 @@
 .Rhistory
 .RData
 .Ruserdata
+/data_old
 
-
+README.html
 littleboxes.R
 importcities.R
 maps.R
 *.xlsx  
 *.txt
 wy.csv
+*.url

@@ -7,6 +7,16 @@ author: Robert C. Cline, **Golden Triangle Land Services, Inc.**, Sidney, Nebras
 [Deed Record Index - Searches Yellow Medicine, MN](https://www.idocmarket.com/Subscription/Subscribe?county=YELMN1)
 
 
+### The cleaned dataset is named: ***data/taxparcels2024.csv*** 
+
+<br>
+
+#### Note:  As explained further below, *Mismatched Records* identify the records where taxpayer's city-state appear to be mismatched.  
+
+
+<br>  
+
+
 The purpose of this repository is to provide code that will allow data cleaning for Yellow Medicine County MN GIS attribute tables.  
 
 Because of the inconsistent nature of the data, the names and addresses should be carefully reviewed.  
@@ -32,7 +42,7 @@ You must:
 ![](images/attribute_table.png)
 
 
-### This repository contains are two R scripts which render (1) *cleaned data*; and (2) *mismatched records*, *viz*.:
+### This repository contains are two R scripts which render: (1) *cleaned data*; and (2) *mismatched records*, *viz*.:
 
 1. *data/tax-parcels-cleaned.csv* in which the tax-owner names and addresses have been cleaned. 
 
@@ -44,4 +54,4 @@ You must:
   - There can be several reasons for mismatch; 
   - Cities which were missing from the US Census Records, or which may have been misspelled on the raw data, were mismatched.
   
-3. A reasonable cleaning and reconstruction of taxpayer information was created but I have not been able to clean up 'owner' data fields.  
+3. A reasonable cleaning and reconstruction of taxpayer information (name, address, city, state) was created but I have not been able to clean up 'owner' data fields.  
