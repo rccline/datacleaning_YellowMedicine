@@ -42,6 +42,10 @@ You must:
 ![](images/attribute_table.png)
 
 
+### *Shape Files* - Yellow Medicine shape files with modified attribute tables:  
+* See "shape" folder
+
+
 ### This repository contains are two R scripts which render: (1) *cleaned data*; and (2) *mismatched records*, *viz*.:
 
 1. *data/tax-parcels-cleaned.csv* in which the tax-owner names and addresses have been cleaned. 

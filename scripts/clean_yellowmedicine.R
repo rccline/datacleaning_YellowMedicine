@@ -5,6 +5,7 @@ library(stringr)
 library(readr)
 library(here)
 
+
 # Step 1: Read the original data
 parcels0 <- read_csv("data/Tax_Parcels.csv") %>%
   clean_names()
