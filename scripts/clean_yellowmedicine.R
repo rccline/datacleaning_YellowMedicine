@@ -5,8 +5,15 @@ library(stringr)
 library(readr)
 library(here)
 
+##%######################################################%##
+#                                                          #
+####   NOTE:  taxparcels2024.csv, which is created in   ####
+####  this script, is updated by script "add_owner.R"   ####
+#                                                          #
+##%######################################################%##
 
-# Step 1: Read the original data
+
+## Step 1: Read the original data
 parcels0 <- read_csv("data/Tax_Parcels.csv") %>%
   clean_names()
 
@@ -312,35 +319,42 @@ taxparcels2024 <- parcels0_clean4 %>%
 # View the updated data to confirm
 head(taxparcels2024$legal)
 
-############################################################
+##%######################################################%##
+##%######################################################%##
 ##%######################################################%##
 #                                                          #
-####           create t-r-s variable                    ####
-#             township-range-section                       #
+####       CREATE TRS and TS variables (twp-rng-sec)    ####
 #                                                          #
 ##%######################################################%##
+
 
 # Create the 't-r-s' variable by concatenating 'township', 'range', and 'section' with '-'
 taxparcels2024 <- taxparcels2024 %>%
-  mutate(t_r_s = paste(township, range, section, sep = "-"))
-
-# View the updated data to confirm
-head(taxparcels2024$t_r_s)
+  mutate(TRS = paste(township, range, section, sep = "-")) |>
+  mutate(TR = paste(township, range, sep = "-"))
 
 
-############################################################
-##%######################################################%##
-#                                                          #
-####           Reorder variables                       ####
-#                                                          #
-##%######################################################%##
+#### REMOVE variables "taxpayer_, owner_, property_#, gis_acres, gis_sqft
 
-
-taxparcels2024 <- taxparcels2024 %>% 
-  select(objectid, parcel_number, tax_year, deeded_acres, tillable_acres, fullname, lastname, firstname, capacity, t_r_s, acres, legal, combined_address, taxpayer_state, taxpayer_city, taxpayer_zip, everything())
-
-taxparcels2024 <- taxparcels2024 %>% 
+taxparcels2024 <- taxparcels2024 %>%
+  rename(address = combined_address, city = taxpayer_city, state = taxpayer_state, zip = taxpayer_zip) |>
+  select(-starts_with("taxpayer"), -starts_with("owner"), -starts_with("property")) |>
   select(-gis_acres, -gis_sqft)
+  
+
+
+# REARRANGE VARIABLES
+
+taxparcels2024 <- taxparcels2024 %>%
+  select(objectid, parcel_number, tax_year, acres, fullname, lastname, firstname, capacity, address, city, state, zip, legal, TRS, TR, township, range, section, lot, block, plat_number, plat_name, deeded_acres, tillable_acres,city_twp_number, city_twp_name, school_district_name, school_district_number)
+  
+  
+# taxparcels2024 <- taxparcels2024 %>%
+#  relocate(capacity, .after = "tillable_acres") |>
+#  relocate(TRS, TR, .after = capacity) 
+
+write_csv(taxparcels2024, "data/taxparcels2024.csv")
+
 
 
 # View the structure or a sample of the reordered dataset
@@ -355,3 +369,4 @@ head(taxparcels2024)
 ##%######################################################%##
 
 write.csv(taxparcels2024, here::here("data/taxparcels2024.csv"), row.names = FALSE)
+
