@@ -433,10 +433,28 @@ here for US Census data</a></li>
 have been misspelled on the raw data, were mismatched.</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li>A reasonable cleaning and reconstruction of taxpayer information
+<li><p>A reasonable cleaning and reconstruction of taxpayer information
 (name, address, city, state) was created but I have not been able to
-clean up ‘owner’ data fields.</li>
+clean up ‘owner’ data fields.</p></li>
+<li><p>The <em>cleaning script</em> uses the
+<strong><em>library(foreign)</em></strong> to modify the <em>.dbf</em>
+file.<br />
+</p></li>
 </ol>
+<ul>
+<li><p><em>Caveat</em> before writing the <em>.dbf</em> file, data must
+first be written to a data.frame format.<br />
+</p></li>
+<li><p>Failure to write a data.frame format will cause the write
+function in <em>library(foreign)</em> to fail.</p></li>
+<li><p><em>Note</em>: Library foreign can only write TEXT variables to
+256 variables.<br />
+</p></li>
+<li><p><em>PostgreSQL</em> does not have TEXT size limitation.<br />
+</p></li>
+<li><p><em>PostgreSQL</em> can write up to 1.6MB per row.</p></li>
+<li></li>
+</ul>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">
