@@ -59,3 +59,13 @@ You must:
   - Cities which were missing from the US Census Records, or which may have been misspelled on the raw data, were mismatched.
   
 3. A reasonable cleaning and reconstruction of taxpayer information (name, address, city, state) was created but I have not been able to clean up 'owner' data fields.  
+
+4. The *cleaning script* uses the ***library(foreign)*** to modify the *.dbf* file.   
+  - *Caveat* before writing the *.dbf* file, data must first be written to a data.frame format.  
+  - Failure to write a data.frame format will cause the write function in *library(foreign)* to fail. 
+  - *Note*:  Library foreign can only write TEXT variables to 256 variables.  
+  - *PostgreSQL* does not have TEXT size limitation.  
+  - *PostgreSQL* can write up to 1.6MB per row.  
+ 
+  
+  - 
