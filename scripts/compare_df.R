@@ -26,6 +26,8 @@ render_diff(diff) # Prints differences in a clear format
 #                                                          #
 ##%######################################################%##
 
+taxparcels2024 <- read.csv("data/taxparcels2024.csv")
+
 # Create the 'TRS' variable
 taxparcels2024 <- taxparcels2024 %>%
   mutate(TRS = paste(township, range, section, sep = "-"))
