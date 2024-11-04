@@ -405,7 +405,17 @@ that contain consistent data.</li>
 <h3><em>Shape Files</em> - Yellow Medicine shape files with modified
 attribute tables:</h3>
 <ul>
-<li>See “shape” folder</li>
+<li>See “shape” folder<br />
+</li>
+<li>DBF attribute tables may be cleaned and modified and saved as DBF
+using <em>library(foreign)</em>.<br />
+</li>
+<li>The modified attribute tables must be first saved as a dataframe,
+before converting to <em>dbf</em> and the dataframe cannot contain
+factors.<br />
+</li>
+<li><em>scripts/reconstruct_DBF.R</em> is an example of saving the
+cleaned attribute table to the gis shape files.</li>
 </ul>
 </div>
 <div id="this-repository-contains-are-two-r-scripts-which-render-1-cleaned-data-and-2-mismatched-records-viz." class="section level3">

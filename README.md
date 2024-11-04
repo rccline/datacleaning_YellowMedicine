@@ -43,7 +43,10 @@ You must:
 
 
 ### *Shape Files* - Yellow Medicine shape files with modified attribute tables:  
-* See "shape" folder
+* See "shape" folder  
+* DBF attribute tables may be cleaned and modified and saved as DBF using *library(foreign)*.   
+* The modified attribute tables must be first saved as a dataframe, before converting to *dbf* and the dataframe cannot contain factors.  
+* *scripts/reconstruct_DBF.R* is an example of saving the cleaned attribute table to the gis shape files.  
 
 
 ### This repository contains are two R scripts which render: (1) *cleaned data*; and (2) *mismatched records*, *viz*.:
